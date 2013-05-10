@@ -192,14 +192,7 @@ function way_function (way)
 		
 	-- speed
     if route_speeds[route] then
-		-- ferries (doesn't cover routes tagged using relations)
-		way.direction = Way.bidirectional
-		way.ignore_in_grid = true
-		if durationIsValid(duration) then
-			way.duration = math.max( 1, parseDuration(duration) )
-		else
-		 	way.speed = route_speeds[route]
-		end
+		return false
 	elseif railway and platform_speeds[railway] then
 		-- railway platforms (old tagging scheme)
 		way.speed = platform_speeds[railway]
